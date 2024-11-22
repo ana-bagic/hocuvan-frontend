@@ -1,0 +1,43 @@
+<mat-drawer-container class="content-container" autosize hasBackdrop=true>
+  <mat-drawer #sidenav class="sidenav" mode="over"  position="end">
+
+    <button class="sidenav-item" (click)="users()">
+      <span *ngIf="!isAdmin">Svi organizatori</span>
+      <span *ngIf="isAdmin">Svi korisnici</span>
+    </button>
+    <!-- kada je korisnik ulogiran -->
+    <button class="sidenav-item" *ngIf="isLoggedIn && !isAdmin" (click)="account()">
+      <span>Moj račun</span>
+    </button>
+    <button class="sidenav-item" *ngIf="isLoggedIn && isVisitor && !isAdmin" (click)="favEvents()">
+      <span>Moji favoriti</span>
+    </button>
+    <button class="sidenav-item" *ngIf="isLoggedIn && !isVisitor && !isAdmin" (click)="myEvents()">
+      <span>Moji događaji</span>
+    </button>
+    <button class="sidenav-item" *ngIf="isLoggedIn && !isAdmin" (click)="chat()">
+      <span>Poruke</span>
+    </button>
+    <button class="sidenav-item" *ngIf="isLoggedIn" (click)="logout()">
+      <span>Odjava</span>
+    </button>
+
+    <!-- kada nije ulogiran -->
+
+    <button class="sidenav-item" *ngIf="!isLoggedIn" (click)="login()">
+      <span>Prijava</span>
+    </button>
+    <button class="sidenav-item" *ngIf="!isLoggedIn" (click)="signup()">
+      <span>Registracija</span>
+    </button>
+
+
+
+  </mat-drawer>
+
+
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+
+
+</mat-drawer-container>

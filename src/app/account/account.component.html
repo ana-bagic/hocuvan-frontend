@@ -1,0 +1,236 @@
+<div class="background">
+  <div class="content">
+    <div class="centered-flex-column">
+      <!-- Ime i slika -->
+      <div *ngIf="hasProfilePhoto" class="photo-container-photo">
+        <div class="photoBorder centeredCircle">
+        </div>
+        <div class="photo centeredCircle">
+          <img src="" alt="Profile photo" class="icon" id="profilePhoto">
+        </div>
+      </div>
+      <div *ngIf="!hasProfilePhoto" class="no-profile-photo whiteText">
+
+        <iframe name="hiddenFrame" width="0" height="0" style="display: none;"></iframe>
+ 
+        <form target="hiddenFrame" id="photoForm" method="POST" enctype="multipart/form-data" (ngSubmit)="setPhoto()">
+          <label for="file">Dodajte profilnu fotografiju:</label>
+          <input  class="photo-input" type="file" name="file" id="file">
+          <button class="btn-primary">Pošalji</button>
+        </form>
+
+        <div class="photo-container-default">
+          <div class="photoBorder centeredCircle">
+          </div>
+          <div class="photo centeredCircle">
+            <img src="../../assets/dipsy.png" alt="Profile photo" class="icon" id="profilePhoto">
+          </div>
+        </div>
+      </div>
+      <h1 *ngIf="isVisitor" class="hello whiteText">Bok {{user.firstName}}!</h1>
+      <h1 *ngIf="!isVisitor" class="hello whiteText">Bok {{user.orgName}}!</h1>
+    </div>
+
+    <div>
+      <!-- Edit? -->
+      <mat-tab-group dynamicHeight animationDuration="500ms" mat-align-tabs="center" #tabRef>
+        <mat-tab class="whiteText" label="Moji podaci">
+          <div class="secondSection">
+            <table>
+              <colgroup>
+                <col>
+                <col>
+              </colgroup>
+              <tr class="tableRow">
+                <td>
+                  <label>Korisničko ime</label>
+                </td>
+                <td>
+                  <label>{{user.username}}</label>
+                </td>
+              </tr>
+              <tr class="tableRow">
+                <td>
+                  <label *ngIf="isVisitor">Ime</label>
+                  <label *ngIf="!isVisitor">Naziv organizacije</label>
+                </td>
+                <td>
+                  <label *ngIf="isVisitor">{{user.firstName}}</label>
+                  <label *ngIf="!isVisitor">{{user.orgName}}</label>
+                </td>
+              </tr>
+              <tr class="tableRow">
+                <td>
+                  <label *ngIf="isVisitor">Prezime</label>
+                  <label *ngIf="!isVisitor">Sjedište</label>
+                </td>
+                <td>
+                  <label *ngIf="isVisitor">{{user.lastName}}</label>
+                  <label *ngIf="!isVisitor">{{user.headquarters}}</label>
+                </td>
+              </tr>
+              <tr class="tableRow">
+                <td>
+                  <label>Email</label>
+                </td>
+                <td>
+                  <label>{{user.email}}</label>
+                </td>
+              </tr>
+              <tr class="tableRow">
+                <td>
+                  <label>Broj telefona</label>
+                </td>
+                <td>
+                  <label>{{user.phoneNumber}}</label>
+                </td>
+              </tr>
+            </table>
+
+            <div class="centered-flex-row">
+              <button [disabled]="loadingDelete" class="btn-primary mr-2" (click)="delete()">
+                <span *ngIf="loadingDelete" class="spinner-border spinner-border-sm mr-1"></span>
+                Obriši račun
+              </button>
+              <label class="error-message">{{errorDeleteMsg}}</label>
+            </div>
+
+          </div>
+
+        </mat-tab>
+
+        <mat-tab label="Uredi podatke">
+          <div class="secondSection">
+            <div *ngIf="isVisitor">
+              <form [formGroup]="form0" (ngSubmit)="save()">
+
+                <label class="whiteText" for="username">Korisničko ime</label>
+                <input type="text" formControlName="username" class="form-control" [(ngModel)]="user.username"
+                  [ngClass]="{ 'is-invalid': submitted && f0.username.errors }" />
+                <div *ngIf="submitted && f0.username.errors" class="error-message">
+                  <div *ngIf="f0.username.errors.required">Korisničko ime je obavezno</div>
+                  <div *ngIf="f0.username.errors.pattern">Korisničko ime sadrži nedozvoljene znakove</div>
+                </div>
+
+                <label class="whiteText" for="firstName">Ime</label>
+                <input type="text" formControlName="firstName" class="form-control" [(ngModel)]="user.firstName"
+                  [ngClass]="{ 'is-invalid': submitted && f0.firstName.errors }" />
+                <div *ngIf="submitted && f0.firstName.errors" class="error-message">
+                  <div *ngIf="f0.firstName.errors.required">Ime je obavezno</div>
+                </div>
+
+                <label class="whiteText" for="lastName">Prezime</label>
+                <input type="text" formControlName="lastName" class="form-control" [(ngModel)]="user.lastName"
+                  [ngClass]="{ 'is-invalid': submitted && f0.lastName.errors }" />
+                <div *ngIf="submitted && f0.lastName.errors" class="error-message">
+                  <div *ngIf="f0.lastName.errors.required">Prezime je obavezno</div>
+                </div>
+
+                <label class="whiteText" for="email">Email</label>
+                <input type="email" formControlName="email" class="form-control" [(ngModel)]="user.email"
+                  [ngClass]="{ 'is-invalid': submitted && f0.email.errors }" />
+                <div *ngIf="submitted && f0.email.errors" class="error-message">
+                  <div *ngIf="f0.email.errors.required">Email adresa je obavezna</div>
+                  <div *ngIf="f0.email.errors.pattern">Email adresa nije validna</div>
+                </div>
+
+                <label class="whiteText" for="phoneNumber">Broj mobitela</label>
+                <input type="tel" formControlName="phoneNumber" class="form-control" [(ngModel)]="user.phoneNumber"
+                  [ngClass]="{ 'is-invalid': submitted && f0.phoneNumber.errors }" />
+                <div *ngIf="submitted && f0.phoneNumber.errors" class="error-message">
+                  <div *ngIf="f0.phoneNumber.errors.required">Broj mobitela je obavezan</div>
+                  <div *ngIf="f0.phoneNumber.errors.pattern">Neispravan broj mobitela</div>
+                </div>
+
+                <div class="centered-flex-column">
+                  <div class="centered-flex-row">
+                    <button [disabled]="loadingUpdate" class="btn btn-primary">
+                      <span *ngIf="loadingUpdate" class="spinner-border spinner-border-sm mr-1"></span>
+                      Spremi promjene
+                    </button>
+                    <label class="error-message">{{errorUpdateMsg}}</label>
+                    <label class="success-message">{{successUpdateMsg}}</label>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div *ngIf="!isVisitor">
+              <form [formGroup]="form1" (ngSubmit)="save()">
+
+                <label class="whiteText" for="username">Korisničko ime</label>
+                <input type="text" formControlName="username" class="form-control" [(ngModel)]="user.username"
+                  [ngClass]="{ 'is-invalid': submitted && f0.username.errors }" />
+                <div *ngIf="submitted && f0.username.errors" class="error-message">
+                  <div *ngIf="f0.username.errors.required">Korisničko ime je obavezno</div>
+                  <div *ngIf="f0.username.errors.pattern">Korisničko ime sadrži nedozvoljene znakove</div>
+                </div>
+
+                <label class="whiteText" for="orgName">Naziv organizacije</label>
+                <input type="text" formControlName="orgName" class="form-control" [(ngModel)]="user.orgName"
+                  [ngClass]="{ 'is-invalid': submitted && f1.orgName.errors }" />
+                <div *ngIf="submitted && f1.orgName.errors" class="invalid-feedback">
+                  <div *ngIf="f1.orgName.errors.required">Naziv organizacije je obavezan</div>
+                </div>
+
+                <label class="whiteText" for="headquarters">Sjedište</label>
+                <input type="text" formControlName="headquarters" class="form-control" [(ngModel)]="user.headquarters"
+                  [ngClass]="{ 'is-invalid': submitted && f1.headquarters.errors }" />
+                <div *ngIf="submitted && f1.headquarters.errors" class="invalid-feedback">
+                  <div *ngIf="f1.headquarters.errors.required">Sjedište je obavezno</div>
+                </div>
+
+                <label class="whiteText" for="email">Email</label>
+                <input type="email" formControlName="email" class="form-control" [(ngModel)]="user.email"
+                  [ngClass]="{ 'is-invalid': submitted && f0.email.errors }" />
+                <div *ngIf="submitted && f0.email.errors" class="error-message">
+                  <div *ngIf="f0.email.errors.required">Email adresa je obavezna</div>
+                  <div *ngIf="f0.email.errors.pattern">Email adresa nije validna</div>
+                </div>
+
+                <label class="whiteText" for="phoneNumber">Broj mobitela</label>
+                <input type="tel" formControlName="phoneNumber" class="form-control" [(ngModel)]="user.phoneNumber"
+                  [ngClass]="{ 'is-invalid': submitted && f0.phoneNumber.errors }" />
+                <div *ngIf="submitted && f0.phoneNumber.errors" class="error-message">
+                  <div *ngIf="f0.phoneNumber.errors.required">Broj mobitela je obavezan</div>
+                  <div *ngIf="f0.phoneNumber.errors.pattern">Neispravan broj mobitela</div>
+                </div>
+
+                <div class="centered-flex-row">
+                  <button [disabled]="loadingUpdate" class="btn btn-primary">
+                    <span *ngIf="loadingUpdate" class="spinner-border spinner-border-sm mr-1"></span>
+                    Spremi promjene
+                  </button>
+                  <label class="error-message">{{errorUpdateMsg}}</label>
+                  <label class="success-message">{{successUpdateMsg}}</label>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab *ngIf="isVisitor" label="Uredi kategorije">
+          <div class="secondSection">
+            <div class="cat-grid">
+              <div class="grid-item" *ngFor="let cat of categories" (click)="cat.isClicked = !cat.isClicked">
+                <mat-card [ngClass]="{'active': cat.isClicked}">
+                  <mat-card-content>
+                    <p class="category-name">
+                      {{cat.categoryName}}
+                    </p>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+            <div class="centered-flex-row">
+              <button class="btn-primary mr-2" (click)="saveCategories()">
+                Spremi promjene
+              </button>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+h1 {
+  margin: auto;
+  padding: 60px;
+  text-align: center;
+  font-size: 30px;
+  color: white;
+}
+
+.dark-background {
+  background-color: #202325;
+  background-size: 100%;
+  min-height: calc(100% - 80px);
+}

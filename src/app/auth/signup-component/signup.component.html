@@ -1,0 +1,166 @@
+<div class="gradient-background">
+
+<div class="form-container">
+<div class="centered-form">
+ <h2 class="mat-h2 whiteText">Registracija</h2>
+
+  <mat-tab-group dynamicHeight animationDuration="500ms" mat-align-tabs="center" #tabRef
+    (selectedTabChange)="changeCategory(tabRef.selectedIndex)" >
+    <mat-tab label="Korisnik" >
+      <br>
+      <div style="width: 400px;">
+        <form [formGroup]="form0" (ngSubmit)="onSubmit()" >
+
+          <label for="username">Korisničko ime</label>
+          <input type="text" formControlName="username" class="form-control" [(ngModel)]="user.username"
+            [ngClass]="{ 'is-invalid': submitted && f0.username.errors }" />
+          <div *ngIf="submitted && f0.username.errors" class="invalid-feedback">
+            <div *ngIf="f0.username.errors.required">Korisničko ime je obavezno</div>
+            <div *ngIf="f0.username.errors.pattern">Korisničko ime sadrži nedozvoljene znakove</div>
+          </div>
+
+          <label for="firstName">Ime</label>
+          <input type="text" formControlName="firstName" class="form-control" [(ngModel)]="user.firstName"
+            [ngClass]="{ 'is-invalid': submitted && f0.firstName.errors }" />
+          <div *ngIf="submitted && f0.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f0.firstName.errors.required">Ime je obavezno</div>
+
+          </div>
+
+          <label for="lastName">Prezime</label>
+          <input type="text" formControlName="lastName" class="form-control" [(ngModel)]="user.lastName"
+            [ngClass]="{ 'is-invalid': submitted && f0.lastName.errors }" />
+          <div *ngIf="submitted && f0.lastName.errors" class="invalid-feedback">
+            <div *ngIf="f0.lastName.errors.required">Prezime je obavezno</div>
+          </div>
+
+          <label for="email">Email</label>
+          <input type="email" formControlName="email" class="form-control" [(ngModel)]="user.email"
+            [ngClass]="{ 'is-invalid': submitted && f0.email.errors }" />
+          <div *ngIf="submitted && f0.email.errors" class="invalid-feedback">
+            <div *ngIf="f0.email.errors.required">Email adresa je obavezna</div>
+            <div *ngIf="f0.email.errors.pattern">Email adresa nije validna</div>
+          </div>
+
+
+          <label for="password">Lozinka</label>
+          <input type="password" formControlName="password" class="form-control" [(ngModel)]="user.password"
+            [ngClass]="{ 'is-invalid': submitted && f0.password.errors }" />
+          <div *ngIf="submitted && f0.password.errors" class="invalid-feedback">
+            <div *ngIf="f0.password.errors.required">Lozinka je obavezna</div>
+            <div *ngIf="f0.password.errors.minlength">Lozinka mora imati barem 5 znakova</div>
+            <div *ngIf="f0.password.errors.maxlength">Lozinka ne smije biti dulja od 30 znakova</div>
+          </div>
+
+          <label for="confirmPassword">Ponovi lozinku</label>
+          <input type="password" formControlName="confirmPassword" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f0.confirmPassword.errors }" />
+          <div *ngIf="submitted && f0.confirmPassword.errors" class="invalid-feedback">
+            <div *ngIf="f0.confirmPassword.errors.required">Ponovljena lozinka je obavezna</div>
+            <div *ngIf="f0.confirmPassword.errors.mustMatch">Lozinke moraju biti jednake</div>
+          </div>
+
+          <label for="phoneNumber">Broj mobitela</label>
+          <input type="tel" formControlName="phoneNumber" class="form-control" [(ngModel)]="user.phoneNumber"
+            [ngClass]="{ 'is-invalid': submitted && f0.phoneNumber.errors }" />
+          <div *ngIf="submitted && f0.phoneNumber.errors" class="invalid-feedback">
+            <div *ngIf="f0.phoneNumber.errors.required">Broj mobitela je obavezan</div>
+            <div *ngIf="f0.phoneNumber.errors.pattern">Neispravan broj mobitela</div>
+          </div>
+
+
+          <br>
+          <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Registracija
+          </button>
+          <span class="whiteText" style="padding-left: 15px">Već imaš račun? <a class="routerText"
+              routerLink="/login">Prijava</a></span>
+          </form>
+          <br>
+        <span class="error-message">{{errorMsg}}</span>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Organizator">
+      <br>
+      <div style="width: 400px;">
+            <form [formGroup]="form1" (ngSubmit)="onSubmit()" >
+
+              <label for="username">Korisničko ime</label>
+              <input type="text" formControlName="username" class="form-control" [(ngModel)]="user.username"
+                [ngClass]="{ 'is-invalid': submitted && f1.username.errors }" />
+              <div *ngIf="submitted && f1.username.errors" class="invalid-feedback">
+                <div *ngIf="f1.username.errors.required">Korisničko ime je obavezno</div>
+                <div *ngIf="f1.username.errors.pattern">Korisničko ime sadrži nedozvoljene znakove</div>
+              </div>
+
+              <label for="email">Email</label>
+              <input type="email" formControlName="email" class="form-control" [(ngModel)]="user.email"
+                [ngClass]="{ 'is-invalid': submitted && f1.email.errors }" />
+              <div *ngIf="submitted && f1.email.errors" class="invalid-feedback">
+                <div *ngIf="f1.email.errors.required">Email adresa je obavezna</div>
+                <div *ngIf="f1.email.errors.pattern">Email adresa nije validna</div>
+              </div>
+
+              <label for="password">Lozinka</label>
+              <input type="password" formControlName="password" class="form-control" [(ngModel)]="user.password"
+                [ngClass]="{ 'is-invalid': submitted && f1.password.errors }" />
+              <div *ngIf="submitted && f1.password.errors" class="invalid-feedback">
+                <div *ngIf="f1.password.errors.required">Lozinka je obavezna</div>
+                <div *ngIf="f1.password.errors.minlength">Lozinka mora biti barem 5 znakova</div>
+                <div *ngIf="f1.password.errors.maxlength">Lozinka ne smije biti dulja od 30 znakova</div>
+              </div>
+
+              <label for="confirmPassword">Ponovi lozinku</label>
+              <input type="password" formControlName="confirmPassword" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f1.confirmPassword.errors }" />
+              <div *ngIf="submitted && f1.confirmPassword.errors" class="invalid-feedback">
+                <div *ngIf="f1.confirmPassword.errors.required">Ponovljena lozinka je obavezna</div>
+                <div *ngIf="f1.confirmPassword.errors.mustMatch">Lozinke moraju biti jednake</div>
+              </div>
+
+              <label for="phoneNumber">Broj mobitela</label>
+              <input type="tel" formControlName="phoneNumber" class="form-control" [(ngModel)]="user.phoneNumber"
+                [ngClass]="{ 'is-invalid': submitted && f1.phoneNumber.errors }" />
+              <div *ngIf="submitted && f1.phoneNumber.errors" class="invalid-feedback">
+                <div *ngIf="f1.phoneNumber.errors.required">Broj mobitela je obavezan</div>
+                <div *ngIf="f1.phoneNumber.errors.pattern">Neispravan broj mobitela</div>
+              </div>
+
+
+              <label for="orgName">Naziv organizacije</label>
+              <input type="text" formControlName="orgName" class="form-control"
+                [(ngModel)]="user.orgName"
+                [ngClass]="{ 'is-invalid': submitted && f1.orgName.errors }" />
+              <div *ngIf="submitted && f1.orgName.errors" class="invalid-feedback">
+                <div *ngIf="f1.orgName.errors.required">Naziv organizacije je obavezan</div>
+              </div>
+
+              <label for="headquarters">Sjedište</label>
+              <input type="text" formControlName="headquarters" class="form-control" [(ngModel)]="user.headquarters"
+                [ngClass]="{ 'is-invalid': submitted && f1.headquarters.errors }" />
+              <div *ngIf="submitted && f1.headquarters.errors" class="invalid-feedback">
+                <div *ngIf="f1.headquarters.errors.required">Sjedište je obavezno</div>
+              </div>
+
+
+
+              <br>
+              <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Registracija
+              </button>
+              <span class="whiteText" style="padding-left: 15px">Već imaš račun? <a class="routerText"
+                  routerLink="/login">Prijava</a></span>
+            </form>
+            <br>
+            <span class="error-message">{{errorMsg}}</span>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+
+</div>
+</div>
+</div>

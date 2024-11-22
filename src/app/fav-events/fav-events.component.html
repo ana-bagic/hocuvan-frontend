@@ -1,0 +1,52 @@
+<div class="dark-background">
+  <div class="main-content">
+
+    <div>
+      <div *ngIf="isVisitor" class="page-title">
+        <div class="section-text">Moji favoriti</div>
+      </div>
+      <div *ngIf="!isVisitor" class="page-title">
+        <div class="section-text">Moji događaji</div>
+        <button class="new-event-button" (click)="newEvent()">
+          DODAJ NOVI DOGAĐAJ
+        </button>
+      </div>
+
+      <div *ngIf="!isVisitor && myEvents.length == 0" class="info-message">
+        Niste još dodali niti jedan događaj.
+      </div>
+
+      <div class="grid-row">
+
+        <div class="grid-item" *ngFor="let event of (isVisitor ? favEvents : myEvents)">
+          <mat-card class="mat-card">
+
+            <img mat-card-image [src]="getImg(event)" alt="Slika događaja"
+              [routerLink]="['/event',event.eventId]" class="cover-image">
+
+            <mat-card-content>
+              <div *ngIf="!isVisitor" class="event-info-and-options">
+                <div [routerLink]="['/event',event.eventId]">
+                  <p class="event-name">{{event.eventName}}</p>
+                  <p class="event-info">{{event.date.toLocaleString()}}</p>
+                  <p class="event-info">{{event.location}}</p>
+                </div>
+                <div class="options">
+                  <mat-icon (click)="edit(event.eventId)">edit</mat-icon>
+                  <mat-icon class="delete" (click)="delete(event.eventId)">delete_outline</mat-icon>
+                </div>
+              </div>
+              <div *ngIf="isVisitor" [routerLink]="['/event',event.eventId]">
+                <p class="event-name">{{event.eventName}}</p>
+                <p class="event-info">{{event.date.toLocaleString()}}</p>
+                <p class="event-info">{{event.location}}</p>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

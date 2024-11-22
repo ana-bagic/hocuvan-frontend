@@ -1,0 +1,18 @@
+<div class="search-bar-container">
+<div #searchIcon class="search-icon-container" [hidden]=searchOpened (click)="openSearch()">
+  <mat-icon  class="search-icon" >search</mat-icon>
+</div>
+  <form #searchInput [hidden]=!searchOpened class="search-bar-form">
+    <mat-form-field class="example-full-width"  floatLabel="never" >
+      <input type="text"  placeholder="Traži događaj po imenu" matInput [formControl]="myControl"   [matAutocomplete]="auto">
+      <mat-autocomplete  autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="goToEvent($event.option.id)">
+        <mat-option    *ngFor="let option of filteredOptions | async" [value]="option.eventName" [id]="option.eventId">
+          {{option.eventName}}
+        </mat-option>
+        <mat-option [hidden]="!noResults" [disabled]="true"  [value]="" [id]="-1">
+         nema rezultata
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</div>

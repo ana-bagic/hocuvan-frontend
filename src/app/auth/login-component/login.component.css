@@ -1,0 +1,195 @@
+<<<<<<< HEAD:angular/src/app/auth/login-component/login.component.css
+<<<<<<< HEAD
+html,
+body {
+  height: 100%;
+}
+
+.gradient-background {
+  --borderWidth: 3px;
+  background: rgb(147, 178, 245);
+=======
+.centered-form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+>>>>>>> origin/develop
+
+}
+
+=======
+.gradient-background {
+  --borderWidth: 3px;
+  min-height: calc(100% - 80px);
+
+}
+
+.form-container {
+  min-width: min-content;
+  max-width: min-content;
+  margin: 0 auto;
+  background: transparent;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+>>>>>>> origin/develop-angular:src/app/auth/signup-component/signup.component.css
+.centered-form {
+  min-width: min-content;
+  max-width: min-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+<<<<<<< HEAD:angular/src/app/auth/login-component/login.component.css
+=======
+
+
+>>>>>>> origin/develop-angular:src/app/auth/signup-component/signup.component.css
+.btn-primary {
+  background-color: #7adce9;
+  border-color: #7adce9;
+}
+
+<<<<<<< HEAD:angular/src/app/auth/login-component/login.component.css
+<<<<<<< HEAD
+=======
+  background-color: #F9A826;
+  border-color: #F9A826;
+}
+
+>>>>>>> origin/develop
+.btn-primary:hover {
+=======
+.btn-primary:hover {
+  background-color: #7adce9;
+  border-color: #7adce9;
+>>>>>>> origin/develop-angular:src/app/auth/signup-component/signup.component.css
+  opacity: 0.8;
+}
+
+
+
+.error-message {
+  color: red;
+}
+
+
+<<<<<<< HEAD:angular/src/app/auth/login-component/login.component.css
+<<<<<<< HEAD
+=======
+
+html,
+body {
+  height: 100%;
+=======
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background: white;
+>>>>>>> origin/develop-angular:src/app/auth/signup-component/signup.component.css
+}
+
+>>>>>>> origin/develop
+label {
+  color: white;
+}
+
+.whiteText {
+  color: white;
+}
+
+<<<<<<< HEAD:angular/src/app/auth/login-component/login.component.css
+mat-tab label {
+  color: white;
+}
+
+
+.routerText {
+  color: #F9A826;
+=======
+.routerText {
+  color: #7adce9;
+  text-decoration: underline;
+}
+
+.routerText:hover {
+  color: #7adce9;
+>>>>>>> origin/develop-angular:src/app/auth/signup-component/signup.component.css
+  text-decoration: underline;
+}
+
+<<<<<<< HEAD:angular/src/app/auth/login-component/login.component.css
+<<<<<<< HEAD
+
+
+/* ANIMACIJA  */
+=======
+.gradient-background {
+  --borderWidth: 3px;
+  background: rgb(147, 178, 245);
+=======
+input {
+  width: 20%;
+}
+
+.form-control {
+  margin-bottom: 0.5rem;
+}
+>>>>>>> origin/develop-angular:src/app/auth/signup-component/signup.component.css
+
+}
+>>>>>>> origin/develop
+
+.gradient-background:after {
+  content: '';
+  position: fixed;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  min-height: calc(100% + var(--borderWidth)*2);
+  width: calc(100% + var(--borderWidth));
+  background: linear-gradient(60deg, #ff3bb4, #dd55ff, #66d8f5, #291dd8, #01060c);
+  z-index: -1;
+  animation: animatedgradient 25s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media(max-width: 900px) {
+  .form-container {
+    width: fit-content
+  }
+
+  mat-tab-group {
+    width: min-content;
+    margin: 0 auto;
+
+  }
+
+
+
+}

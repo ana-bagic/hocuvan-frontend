@@ -1,0 +1,21 @@
+<div class="dark-background">
+  <div class="main-content">
+    <div class="grid-container">
+      <h2 class="title">Izaberi najdraže kategorije</h2>
+      <div class="grid-row">
+        <div class="grid-item" *ngFor="let cat of categoryCards"  [ngClass]="{'active': cat.isClicked}" (click)="cat.isClicked = !cat.isClicked">
+          <div class="mat-card-wrapper">
+            <mat-card  class="mat-card-favs">
+              <mat-card-content>
+                <p class="category-name">
+                  {{cat.categoryName}}
+                </p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      <button class="save-btn" (click)="submit()">Spremi odabir</button>
+    </div>
+  </div>
+</div>

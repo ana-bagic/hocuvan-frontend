@@ -1,0 +1,378 @@
+html,
+body {
+  height: 100%;
+}
+
+
+.dark-background {
+  --borderWidth: 3px;
+  width: 100%;
+  height: auto;
+  background: #202325;
+
+
+}
+
+.search {
+  padding-top: 60px;
+  background: #202325;
+
+}
+
+.search-box-wrapper {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: calc(70% - 20px);
+  height: auto;
+  margin: 0 auto;
+  transform: translateY(50%);
+  border-radius: 5px;
+
+
+
+}
+
+
+
+.search-box {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  vertical-align: middle;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 10px;
+  column-gap: 20px;
+
+}
+
+.search-box-item {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+
+}
+
+.main-content {
+  padding-top: 200px;
+  width: 70%;
+  margin: 0px auto;
+}
+
+
+.grid-container {
+
+  margin: 0px auto;
+
+
+}
+
+.grid-row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin: 0 auto;
+  row-gap: 10px;
+
+}
+
+.grid-item {
+  display: block;
+  position: relative;
+  padding: 10px;
+  box-sizing: border-box;
+  flex: 0;
+  margin: 0 1%;
+}
+
+
+
+.cover-image {
+  object-fit: cover;
+  height: 320px;
+}
+
+.mat-card {
+  background-color: rgba(30, 29, 32, 0.911);
+  border-radius: 5px;
+  cursor: pointer;
+  max-width: 350px !important;
+  max-height: min-content !important;
+}
+
+
+
+mat-form-field {
+  padding: 5px;
+  font-size: large;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+
+  background-color: white;
+}
+
+::ng-deep .home-search-form mat-datepicker-toggle.mat-datepicker-toggle button.mat-focus-indicator.mat-icon-button.mat-button-base {
+  display: inherit;
+  width: 100%;
+}
+
+::ng-deep .home-search-form .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: black !important;
+
+}
+
+::ng-deep .home-search-form .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: black !important;
+}
+
+::ng-deep .home-search-form .mat-form-field-underline {
+  /*change color of underline*/
+  background-color: black !important;
+}
+
+::ng-deep .home-search-form .mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: black !important;
+  ;
+}
+
+::ng-deep .home-search-form .mat-form-field-label {
+  /*change color of label*/
+  color: black !important;
+}
+
+
+.home-search-form mat-datepicker-toggle {
+  color: black !important;
+}
+
+input {
+  color: #010615;
+}
+
+::ng-deep .home-search-form .mat-focused .mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: black !important;
+}
+
+::ng-deep .home-search-form .mat-focused .mat-form-field-label {
+  /*change color of label when focused*/
+  color: black !important;
+  text-align: center;
+}
+
+
+::ng-deep .home-search-form .mat-form-field-label {
+  /*change color of label when focused*/
+  color: black !important;
+  text-align: center;
+  font-size: medium;
+
+}
+
+
+
+.mat-card-image {
+
+  object-fit: cover;
+  max-width: 350px !important;
+  max-height: 250px !important;
+
+}
+
+
+
+hr.gradient {
+  margin-bottom: 10px;
+  margin-top: 100px;
+  align-items: flex-start;
+  height: 3px;
+  width: 50%;
+  border-radius: 5px;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: animatedgradient 15s ease infinite;
+}
+
+hr.gradient-wide {
+
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  padding: 0px;
+  margin: 0px;
+  animation: animatedgradient 15s ease infinite;
+
+}
+
+.info-text {
+  color: gray;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.section-text {
+  color: white;
+  font-size: 30px;
+  line-height: 34px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 18px;
+  padding: 100px 0 20px 0;
+}
+
+.btn-primary {
+  background-color: rgb(122, 220, 233);
+  border-color: #7adce9;
+}
+
+.btn-primary:hover {
+  opacity: 0.8;
+}
+
+.error-message {
+  color: red;
+}
+
+.search-title {
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+  transform: translateY(15px);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 35px;
+
+}
+
+label {
+  color: white;
+}
+
+.whiteText {
+  color: white;
+}
+
+mat-tab label {
+  color: white;
+}
+
+p {
+  color: white;
+}
+
+p.event-name {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+p.event-info {
+  font-size: 18px;
+}
+
+.routerText {
+  color: #7adce9;
+  text-decoration: underline;
+}
+
+
+/*    ANIMACIJA  */
+.search-box-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: white;
+  z-index: -1;
+  border-radius: 5px;
+
+}
+
+.search-box-wrapper::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: white;
+  z-index: -2;
+  filter: blur(30px);
+  border-radius: 5px;
+
+}
+
+.search-box-wrapper::before,
+.search-box-wrapper::after {
+  background: linear-gradient(235deg, #00bcd4, #010615, #e73c7e);
+  border-radius: 5px;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+@media(max-width: 9000px) {
+
+  .main-content {
+    padding-top: 160px;
+  }
+
+  .grid-item {
+
+    flex-basis: 30%;
+  }
+
+  .search-title {
+    transform: translateY(25px);
+  }
+}
+
+
+@media(max-width: 765px) {
+  .grid-item {
+    flex-basis: 44%;
+
+  }
+
+  .search-box-wrapper {
+
+    transform: translateY(25%);
+  }
+}
+
+@media(max-width: 600px) {
+  .grid-item {
+    flex-basis: 90%;
+  }
+
+  mat-form-field {
+    font-size: medium;
+  }
+}
+
+@media(max-width: 400px) {
+
+  .search-box-wrapper {
+
+    transform: translateY(25%);
+  }
+}

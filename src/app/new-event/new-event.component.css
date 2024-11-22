@@ -1,0 +1,128 @@
+.background {
+  min-height: calc(100% - 80px);
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 300% 300%;
+  animation: animatedgradient 15s ease infinite;
+}
+
+.content {
+  background: #202325;
+  width: 60%;
+  display: block;
+  margin: auto;
+}
+
+.page-title {
+  color: white;
+  padding: 50px 0px 20px 50px;
+  font-size: 30px;
+  line-height: 34px;
+}
+
+.info-message {
+  padding-left: 50px;
+  padding-bottom: 40px;
+  color: gray;
+}
+
+hr.gradient {
+  margin-bottom: 40px;
+  align-items: flex-start;
+  height: 5px;
+  width: 90%;
+  border-radius: 5px;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: animatedgradient 15s ease infinite;
+}
+
+.btn-photo {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 50px;
+}
+
+input {
+  margin-top: 10px;
+}
+
+.add-photo {
+  margin-bottom: 30px;
+}
+
+label {
+  font-size: 18px;
+}
+
+form {
+  min-width: min-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+form.event-form {
+  padding: 10px 50px;
+}
+
+.form-control {
+  margin-bottom: 15px;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 8px;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.white-text {
+  color: white;
+}
+
+.centered-flex-column {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.btn-primary {
+  background-color: transparent;
+  color: #e73c7e;
+  border: 2px solid;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  line-height: 24px;
+  text-transform: uppercase;
+  padding: 3px 16px;
+  margin: 20px 0px 20px 0px;
+  width: fit-content;
+}
+
+.map {
+  height: 400px;
+  width: 95%;
+  margin-top: 50px;
+  margin: auto;
+  padding-bottom: 50px;
+  max-width: 900px;
+  
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}

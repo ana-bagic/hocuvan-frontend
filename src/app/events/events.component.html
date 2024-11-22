@@ -1,0 +1,34 @@
+<div class="dark-background">
+
+  <div class="main-content">
+    <div id='map' class='map'> </div>
+    <section class="filtered">
+
+      <div class="grid-container">
+        <h2 class="section-text">Svi nadolazeći događaji</h2>
+        <div class="grid-row">
+          <div class="grid-item" *ngFor="let event of events">
+            <mat-card class="mat-card" [routerLink]="['/event',event.eventId]">
+
+              <img mat-card-image [src]="getImg(event)" alt="Slika događaja"
+              [routerLink]="['/event',event.eventId]" class="cover-image">
+              <mat-card-content>
+                <p class="event-name">
+                  {{event.eventName}}
+                </p>
+                <p class="event-info">
+                  {{event.date.toLocaleString()}}
+                </p>
+                <p class="event-info">{{event.location}}</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+
+      </div>
+
+
+    </section>
+  </div>
+</div>
+<app-footer></app-footer>

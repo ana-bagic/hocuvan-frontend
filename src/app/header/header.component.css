@@ -1,0 +1,234 @@
+header {
+  border-radius: 1px solid;
+  height: 80px;
+}
+
+.header-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  margin-left: 20px;
+  transform: translateY(10%);
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+.navbar {
+  padding: 0;
+  display: flexbox;
+  box-sizing: content-box;
+  background: rgb(33, 33, 34);
+  height: 80px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+.buttons-container {
+  display: flex;
+  width: fit-content;
+  padding-right: 5%;
+  margin-left: auto;
+
+}
+
+.login,
+.sign-up {
+  background-color: transparent;
+  border-color: #7adce9;
+  color: #7adce9;
+  fill: #7adce9;
+  border: 1px solid;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: center;
+  letter-spacing: 1px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  line-height: 24px;
+  text-transform: uppercase;
+  padding: 3px 16px;
+  opacity: 1;
+
+}
+
+.sign-up {
+  background-color: #7adce9;
+  border-color: #7adce9;
+  color: aliceblue;
+}
+
+.login:hover {
+  opacity: 0.6;
+}
+
+.sign-up:hover {
+  opacity: 0.6;
+}
+
+.links-container {
+  margin-top: 5px;
+
+}
+
+.header-link {
+  color: white;
+  margin-right: 40px;
+  font-size: x-large;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.header-link:hover {
+
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.sign-up-buttons {
+  box-sizing: border-box;
+  display: flex;
+  column-gap: 10px;
+}
+
+.icon-container {
+  box-sizing: border-box;
+  width: fit-content;
+}
+
+.divider {
+  color: white;
+  margin-right: 40px;
+  font-size: x-large;
+  font-weight: 400;
+
+}
+
+mat-icon {
+  color: white;
+  cursor: pointer;
+  transform: scale(2);
+}
+
+
+
+
+mat-icon.menu {
+  visibility: hidden;
+}
+
+@media(max-width: 800px) {
+  mat-icon.menu {
+    visibility: visible;
+    margin-right: 5px;
+  }
+
+  .icon-container {
+
+    position: absolute;
+    transform: translateX(150px);
+  }
+
+
+  .sign-up-buttons {
+    visibility: collapse;
+  }
+}
+
+@media(max-width: 700px) {
+  mat-icon.menu {
+    visibility: visible;
+    margin-right: 5px;
+
+  }
+
+  .float-right.buttons-container {
+
+    position: relative;
+    transform: translateY(-50px);
+
+  }
+
+  .search-container {
+    margin-top: 5px;
+    transform: translateX(-150px);
+
+  }
+
+
+  .sign-up-buttons {
+    visibility: collapse;
+  }
+}
+
+
+@media(max-width: 500px) {
+  mat-icon.menu {
+    visibility: visible;
+    margin-right: 5px;
+
+  }
+
+  .float-right.buttons-container {
+
+    position: relative;
+    transform: translateY(-50px);
+
+  }
+
+  .search-container {
+    margin-top: 5px;
+    transform: translateX(-420px);
+
+  }
+
+
+  .sign-up-buttons {
+    visibility: collapse;
+  }
+}
+
+
+@media(max-width: 380px) {
+  mat-icon.menu {
+    visibility: visible;
+    margin-right: 5px;
+
+  }
+
+  .float-right.buttons-container {
+
+    position: relative;
+    transform: translateY(-50px);
+
+
+  }
+
+  .icon-container {
+    transform: translateX(180px);
+  }
+
+  .search-container {
+    margin-top: 5px;
+    transform: translateX(-20px);
+    transform: translateY(-50px);
+
+  }
+
+
+  .sign-up-buttons {
+    visibility: collapse;
+  }
+}

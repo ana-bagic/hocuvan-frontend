@@ -1,0 +1,162 @@
+<<<<<<< HEAD:angular/src/app/auth/signup-component/signup.component.css
+html,
+body {
+  height: 100%;
+}
+
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/develop
+=======
+>>>>>>> origin/develop-angular:src/app/auth/login-component/login.component.css
+.gradient-background {
+  --borderWidth: 3px;
+  min-height: calc(100% - 80px);
+
+}
+
+
+.form-container {
+  min-width: min-content;
+  max-width: min-content;
+  margin: 0 auto;
+  background: transparent;
+  padding-top: 7%;
+  padding-bottom: 3%;
+}
+
+<<<<<<< HEAD
+=======
+.gradient-background:after {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(60deg, #7d1b91, #111986);
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 30s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+>>>>>>> origin/develop
+
+.centered-form {
+  min-width: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+.btn-primary {
+  background-color: #7adce9;
+  border-color: #7adce9;
+}
+
+.btn-primary:hover {
+  background-color: #F9A826;
+  border-color: #F9A826;
+  opacity: 0.8;
+}
+
+.error-message {
+  color: red;
+}
+
+.mat-tab-labels,
+.mat-tab-label,
+.mat-tab-link {
+  color: white;
+  font-size: 16px;
+
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background: white;
+
+}
+
+label {
+  color: white;
+  margin-bottom: 0rem;
+}
+
+.whiteText {
+  color: white;
+}
+
+.routerText {
+  color: #7adce9;
+  text-decoration: underline;
+}
+
+.routerText:hover {
+  color: #F9A826;
+  text-decoration: underline;
+  opacity: 70;
+}
+<<<<<<< HEAD
+
+.form-control {
+  margin-bottom: 0.5rem;
+}
+
+/*    ANIMACIJA  */
+
+.gradient-background:after {
+  content: '';
+  position: fixed;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth));
+  width: calc(100% + var(--borderWidth));
+  background: linear-gradient(60deg, #ff3bb4, #dd55ff, #66d8f5, #291dd8, #01060c);
+  z-index: -1;
+  animation: animatedgradient 25s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+=======
+.form-control{
+  margin-bottom: 0.5rem;
+}
+>>>>>>> origin/develop

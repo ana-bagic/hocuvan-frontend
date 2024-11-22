@@ -1,0 +1,113 @@
+.search-bar-form {
+  min-width: 300px;
+  max-width: 300px;
+  width: 100%;
+
+}
+
+.search-icon-container {
+  display: block;
+  margin-left: 20px;
+}
+
+.search-icon {
+  scale: 1.5;
+  cursor: pointer;
+}
+
+.search-icon {
+  color: white;
+  width: fit-content;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: white !important;
+
+}
+
+::ng-deep .search-bar-form .mat-focused .mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #ffff !important;
+}
+
+::ng-deep .search-bar-form .mat-focused .mat-form-field-label {
+  /*change color of label when focused*/
+  color: #ffff !important;
+  text-align: center;
+}
+
+
+::ng-deep .search-bar-form .mat-form-field-label {
+  /*change color of label when focused*/
+  color: #ffff !important;
+  text-align: center;
+  font-size: medium;
+
+}
+
+.example-full-width {
+  color: aliceblue;
+}
+
+::ng-deep .mat-form-field-label {
+  /*change color of label*/
+  color: white !important;
+
+}
+
+
+
+
+::ng-deep .mat-form-field-label {
+  /*change color of label*/
+  color: white !important;
+
+}
+
+
+::ng-deep.mat-form-field {
+  color: white;
+}
+
+
+::ng-deep .mat-focused .mat-form-field-underline {
+  /*change color of underline*/
+  background-color: white !important;
+}
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: white !important;
+}
+
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: white !important;
+  ;
+}
+
+
+@media(max-width: 1000px) {
+  mat-icon.search-icon {
+    visibility: visible;
+    margin-right: 5px;
+  }
+
+  .icon-container {
+
+    position: absolute;
+    transform: translateX(150px);
+  }
+
+
+  .sign-up-buttons {
+    visibility: collapse;
+  }
+}

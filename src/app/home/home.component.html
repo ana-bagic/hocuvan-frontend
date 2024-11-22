@@ -1,0 +1,145 @@
+<div class="search">
+  <h1 class="search-title">Pronađi događaj</h1>
+  <div class="search-box-wrapper">
+
+    <div class="search-box">
+      <div class="search-box-item">
+        <mat-form-field class="home-search-form" appearance="fill" >
+          <mat-label>Izaberi lokaciju</mat-label>
+
+          <mat-select  class="home-search-form" (selectionChange)="filterSelected(0,$event.value)">
+            <mat-option>-</mat-option>
+            <mat-option *ngFor="let location of locations" [value]="location">{{location}}</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="search-box-item">
+        <mat-form-field   class="home-search-form" appearance="fill">
+          <mat-label>Izaberi tip događaja</mat-label>
+          <mat-select (selectionChange)="filterSelected(1,$event.value)">
+            <mat-option>-</mat-option>
+            <mat-option *ngFor="let cat of categories" [value]="cat.categoryName">{{cat.categoryName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="search-box-item">
+        <mat-form-field  class="home-search-form" appearance="fill">
+          <mat-label>Izaberi datum</mat-label>
+          <input matInput [matDatepicker]="picker" (dateChange)="filterSelected(2,$event.value)">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="search-box-item">
+        <mat-form-field  class="home-search-form" appearance="fill">
+          <mat-label>Max cijena ulaznice</mat-label>
+          <mat-select (selectionChange)="filterSelected(3,$event.value)">
+            <mat-option>-</mat-option>
+            <mat-option [value]=0>besplatan ulaz</mat-option>
+            <mat-option [value]=50>50kn</mat-option>
+            <mat-option [value]=100>100kn</mat-option>
+            <mat-option [value]=200>200kn</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+    </div>
+  </div>
+  <hr class="gradient-wide">
+  <div class="dark-background">
+
+
+    <div class="main-content">
+
+     
+
+      <section class="filtered">
+
+        <div class="grid-container">
+          <h2 class="section-text">Nadolazeći događaji</h2>
+          <div class="grid-row">
+            <div class="grid-item" *ngFor="let event of filteredEvents">
+              <mat-card class="mat-card" [routerLink]="['/event',event.eventId]">
+
+                <img mat-card-image [src]="getImg(event)" alt="Slika događaja"
+                [routerLink]="['/event',event.eventId]" class="cover-image">
+                <mat-card-content>
+                  <p class="event-name">
+                    {{event.eventName}}
+                  </p>
+                  <p class="event-info">
+                    {{event.date.toLocaleString()}}
+                  </p>
+                  <p class="event-info">{{event.location}}</p>
+                </mat-card-content>
+              </mat-card>
+            </div>
+
+          </div>
+
+          <hr class="gradient">
+
+        </div>
+      </section>
+
+
+
+
+      <section class="recomended" *ngIf="isLoggedIn && isVisitor">
+        <div class="grid-container">
+          <h2 class="section-text">Izdvojeno za tebe</h2>
+          <div *ngIf="todaysEvents.length == 0" class="info-text">
+            Dodajte omiljene kategorije kako biste mogli vidjeti predložene događaje
+          </div>
+          <div class="grid-row">
+            <div class="grid-item" *ngFor="let event of todaysEvents">
+              <mat-card class="mat-card" [routerLink]="['/event',event.eventId]">
+
+                <img mat-card-image [src]="getImg(event)" alt="Slika događaja"
+                [routerLink]="['/event',event.eventId]" class="cover-image">
+                <mat-card-content>
+                  <p class="event-name">
+                    {{event.eventName}}
+                  </p>
+                  <p class="event-info">
+                    {{event.date.toLocaleString()}}
+                  </p>
+                  <p class="event-info">{{event.location}}</p>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+
+          <hr class="gradient">
+
+        </div>
+      </section>
+      <section clas="most-popular">
+        <div class="grid-container">
+          <h2 class="section-text">Najpopularnije</h2>
+          <div class="grid-row">
+            <div class="grid-item" *ngFor="let event of popularEvents">
+              <mat-card class="mat-card" [routerLink]="['/event',event.eventId]">
+
+                <img mat-card-image [src]="getImg(event)" alt="Slika događaja"
+                [routerLink]="['/event',event.eventId]" class="cover-image">
+                <mat-card-content>
+                  <p class="event-name">
+                    {{event.eventName}}
+                  </p>
+                  <p class="event-info">
+                    {{event.date.toLocaleString()}}
+                  </p>
+                  <p class="event-info">{{event.location}}</p>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <app-footer></app-footer>

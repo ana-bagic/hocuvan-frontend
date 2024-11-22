@@ -1,0 +1,61 @@
+.dark-background {
+  overflow: hidden;
+  background: #202325;
+  z-index: -100;
+  height: auto;
+  margin: 0 auto;
+  padding-top: 100px;
+
+}
+
+.footer-content {
+  padding-top: 100px;
+  width: 30%;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+
+
+.card {
+
+  border: none;
+}
+
+.card-info {
+  color: white;
+  background-color: #202325;
+  font-weight: 400;
+  font-size: 16px;
+  align-content: center;
+  text-align: center;
+}
+
+
+hr.gradient {
+  margin-bottom: 10px;
+  margin-top: 50px;
+  align-items: flex-start;
+  height: 3px;
+  width: 50%;
+  border-radius: 5px;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: animatedgradient 15s ease infinite;
+}
+
+.made-text {
+  padding-top: 100px;
+  text-align: center;
+  color: white;
+  padding-bottom: 15px;
+  font-size: 16px;
+}
+
+.heart {
+  color: #e73c7e;
+}

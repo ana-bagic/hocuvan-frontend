@@ -1,0 +1,31 @@
+<div class="background">
+  <div class="content">
+
+    <div class="page-title">
+      Dodaj promotivnu sliku događaja
+    </div>
+    <div class="info-message">
+      Promotivnu sliku nije nužno dodati, ali dodavanjem ćete zainteresirati više korisnika.
+    </div>
+
+    <hr class="gradient">
+
+    <div class="btn-photo white-text">
+      <div class="add-photo">
+        <iframe name="hiddenFrame" width="0" height="0" style="display: none;"></iframe>
+  
+        <form target="hiddenFrame" id="photoForm" method="POST" enctype="multipart/form-data" (ngSubmit)="setPhoto()">
+          <label for="file">Želim dodati promotivnu sliku:</label>
+          <input type="file" name="file" id="file">
+          <button class="btn-primary">DODAJ SLIKU</button>
+        </form>
+      </div>
+      <label>Ne želim dodati promotivnu sliku:</label>
+      <button class="btn-primary" (click)="noPhoto()">
+        PRESKOČI DODAVANJE
+      </button>
+    </div>
+    
+
+  </div>
+</div>

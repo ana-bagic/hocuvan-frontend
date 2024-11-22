@@ -1,0 +1,37 @@
+<div class="gradient-background">
+  <div class="form-container">
+    <div class="centered-form">
+
+      <h2 class="mat-h2 whiteText">Prijava</h2>
+      <br>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Korisničko ime</label>
+          <input type="text" formControlName="username" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Korisničko ime je obavezno</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Lozinka</label>
+          <input type="password" formControlName="password" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Lozinka je obavezna</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Prijava
+          </button>
+          <span class="whiteText" style="padding-left: 15px">Nemaš račun? <a class="routerText"
+              routerLink="/signup">Registracija</a></span>
+        </div>
+        <br>
+        <span class="error-message">{{errorMsg}}</span>
+      </form>
+    </div>
+  </div>
+</div>

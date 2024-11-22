@@ -1,0 +1,91 @@
+<div class="background">
+  <div class="content">
+    <div class="centered-flex-column whiteText">
+
+      <div class="photoContainer">
+        <div class="photoBorder centeredCircle">
+        </div>
+        <div class="photo centeredCircle">
+          <img [src]="getImg()" alt="Profile photo" class="icon">
+        </div>
+      </div>
+      <h1 *ngIf="isVisitor" class="hello">{{user.firstName}} {{user.lastName}}</h1>
+      <h1 *ngIf="!isVisitor" class="hello">{{user.orgName}}</h1>
+    </div>
+
+    <div>
+
+      <div class="secondSection">
+        <table>
+          <colgroup>
+            <col>
+            <col>
+          </colgroup>
+          <tr class="tableRow">
+            <td>
+              <label>Korisničko ime</label>
+            </td>
+            <td>
+              <label>{{user.username}}</label>
+            </td>
+          </tr>
+          <tr class="tableRow">
+            <td>
+              <label *ngIf="isVisitor">Ime</label>
+              <label *ngIf="!isVisitor">Naziv organizacije</label>
+            </td>
+            <td>
+              <label *ngIf="isVisitor">{{user.firstName}}</label>
+              <label *ngIf="!isVisitor">{{user.orgName}}</label>
+            </td>
+          </tr>
+          <tr class="tableRow">
+            <td>
+              <label *ngIf="isVisitor">Prezime</label>
+              <label *ngIf="!isVisitor">Sjedište</label>
+            </td>
+            <td>
+              <label *ngIf="isVisitor">{{user.lastName}}</label>
+              <label *ngIf="!isVisitor">{{user.headquarters}}</label>
+            </td>
+          </tr>
+          <tr class="tableRow">
+            <td>
+              <label>Email</label>
+            </td>
+            <td>
+              <label>{{user.email}}</label>
+            </td>
+          </tr>
+          <tr class="tableRow">
+            <td>
+              <label>Broj telefona</label>
+            </td>
+            <td>
+              <label>{{user.phoneNumber}}</label>
+            </td>
+          </tr>
+        </table>
+
+        <div *ngIf="isCurrentAdmin" class="centered-flex-row">
+          <button [disabled]="loadingDelete" class="btn-primary mr-2" (click)="delete()">
+            <span *ngIf="loadingDelete" class="spinner-border spinner-border-sm mr-1"></span>
+            Obriši račun
+          </button>
+          <label class="error-message">{{errorDeleteMsg}}</label>
+        </div>
+
+        <div *ngIf="isCurrentVisitor" class="centered-flex-row">
+          <form [formGroup]="newMessage" class="message-form">
+              <input class="new-message-field" type="text" formControlName="message" maxlength="990" placeholder="Aa" />
+              <button [disabled]="loadingSend" title="Imate pitanje za organizatora događaja?" class="btn-primary" (click)="sendMessage()">
+                <span *ngIf="loadingSend" class="spinner-border spinner-border-sm mr-1"></span>
+                Pošalji poruku
+              </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

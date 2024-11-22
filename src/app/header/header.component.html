@@ -1,0 +1,42 @@
+<header>
+  <div class="header-container">
+  <nav class="navbar  navbar-expand-lg sticky">
+    <!-- fixed-top -> for sticky header-->
+    <div class="flex-grow-2">
+      <a aria-label="Home" class="logo" routerLink="/">
+        <img src="/assets/logo.gif">
+      </a>
+    </div>
+
+    <div class="search-container">
+      <app-search-bar></app-search-bar>
+       </div>
+ 
+    <div class="float-right  buttons-container">
+
+     
+
+      <div class="icon-container">
+      <mat-icon class="menu" (click)="toggleSideNav()">menu</mat-icon>
+      </div>
+
+      <div class="sign-up-buttons">
+           <div class="links-container">
+        <a class="header-link" routerLink="/events">Svi događaji</a>
+        <a class="divider">|</a>
+       </div>
+       <div class="icon-container">
+        <mat-icon *ngIf="isLoggedIn" (click)="toggleSideNav()">account_circle</mat-icon>
+       </div>
+
+        <div *ngIf="!isLoggedIn">
+          <a routerLink="/signup" class="float-right sign-up mr-2">Registracija</a>
+          <a routerLink="/login" class="float-right login mr-2">Prijava</a>
+        </div>
+
+      </div>
+
+    </div>
+  </nav>
+</div>
+</header>

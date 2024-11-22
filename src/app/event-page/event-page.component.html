@@ -1,0 +1,116 @@
+<div class="background">
+    <div class="content">
+        <h1 class="title">{{(event.eventName)}}</h1>
+        <div *ngIf="isLoggedIn && isVisitor" class="fav-button">
+            <button mat-fab class="btn" (click)="toggleSelected()">
+                <mat-icon *ngIf="!selected" [ngStyle]="{'color':'white'}">favorite</mat-icon>
+                <mat-icon *ngIf="selected" [ngStyle]="{'color':'#e73c7e'}">favorite</mat-icon>
+            </button>
+        </div>
+        <div *ngIf="event.coverPhoto === undefined" class="img-container">
+            <img src="/assets/defimg.png"
+                alt="Slika događaja" class="picture">
+        </div>
+        <div *ngIf="event.coverPhoto !== undefined" class="img-container">
+            <img src="" alt="Slika događaja" class="picture" id="coverPhoto">
+        </div>
+
+        <div class="info_container">
+            <div class="info container">
+                <p *ngIf="event.date !== undefined" type="date">Datum: {{event.date.toLocaleDateString('en-GB')}}</p>
+                <p *ngIf="event.date !== undefined" >Vrijeme: {{event.date.toLocaleTimeString()}}</p>
+                <p>Adresa: {{event.location}}</p>
+                <p>Organizator: <span [routerLink]="['/organizer',event.organizerUsername]" class="link">{{event.orgName}}</span></p>
+                <p>Kategorija: {{event.categoryName}}</p>
+                <p *ngIf="free; else price">Cijena: besplatno</p>
+                <ng-template #price>
+                    <p>Cijena (kn): {{event.price}}</p>
+                </ng-template>
+                <p>Broj mjesta: {{event.numberOfSeats}}</p>
+            </div>
+            <div class="description container">{{event.description}}</div>
+        </div>
+        <div *ngIf="isLoggedIn" class="interested container">
+            <p class="usernames" *ngIf="visitors.length > 0; else none">Zainteresirani: </p>
+            <ng-template #none>
+                <p class="usernames">Nema prijavljenih. Prvi se prijavi!</p>
+            </ng-template>
+            <div class="usernames" *ngFor="let user of visitors; let i=index">
+                <p class="usernames" *ngIf="i != visitors.length-1; else last">{{user.username}}, </p>
+                <ng-template #last class="last" style="font-size: large;">{{user.username}}</ng-template>
+            </div>
+
+            <p class="usernames" *ngIf="isLast">{{user.username}}</p>
+            <p class="usernames" *ngIf="others != null"> +{{others}} others</p>
+        </div>
+        <div class="reviews container">
+            <p *ngIf="reviews.length < 1; else print">Nema recenzija za ovaj događaj.</p>
+            <ng-template #print><p class="rev-title">Recenzije</p>
+                <div *ngFor="let review of reviews" [value]="submitted" (change)="show()">
+                    <div class="rev">{{review.visitorUsername}}: ocjena {{review.grade}}, "{{review.text}}"
+                        <button mat-mini-fab class="btn" *ngIf="canDeleteReview(review.visitorUsername)" (click)="deleteReview(review.reviewId)"><mat-icon>delete</mat-icon></button>
+                        <button mat-mini-fab class="btn" *ngIf="myEvent && review.reply == null" (click)="showInput(review.reviewId)"><mat-icon>chat_bubble</mat-icon></button>
+                        <button mat-mini-fab class="btn" *ngIf="myEvent && review.reply != null" (click)="showEdit(review.reviewId)"><mat-icon>edit</mat-icon></button>
+                        <div *ngIf="(active == review.reviewId && (!isVisitor) && !edit)">
+                            <textarea cols="40" rows="2" maxlength="255" [(ngModel)]="reply.reply"></textarea>
+                            <button mat-mini-fab class="btn" (click)="sendReply(review.reviewId)"><mat-icon>send</mat-icon></button>
+                        </div>
+                        <div *ngIf="(active == review.reviewId && edit)">
+                            <textarea cols="40" rows="2" maxlength="255" [(ngModel)]="reply.reply"></textarea>
+                            <button mat-mini-fab class="btn" (click)="editReply(review.reviewId)"><mat-icon>check_circle_outline</mat-icon></button>
+                        </div>
+                        <div *ngIf="(review.reply != null) && (active != review.reviewId)" class="replyText">{{review.organizerUsername}}: {{review.reply}}</div>   
+                        <div class="dateDiv"><small class="date">({{review.date.toLocaleString('en-GB')}})</small></div>               
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+        <div class="myReview container" *ngIf="isLoggedIn && isVisitor">
+            <div>Unesi svoju recenziju</div>
+            <br>
+            <form #reviewForm="ngForm" novalidate>
+                <div>1. Ocjena<span style="color:red">*</span></div>
+                <div class="form-group">
+                    <div class="radio-toolbar" [class.is-invalid]="grade.touched && grade.invalid">
+                        <input type="radio" id="radio1" name="radioGrade" value="1" #grade="ngModel" required [(ngModel)]="myReview.grade">
+                        <label for="radio1">1</label>
+                
+                        <input type="radio" id="radio2" name="radioGrade" value="2" #grade="ngModel" required [(ngModel)]="myReview.grade">
+                        <label for="radio2">2</label>
+                
+                        <input type="radio" id="radio3" name="radioGrade" value="3" #grade="ngModel" required [(ngModel)]="myReview.grade">
+                        <label for="radio3">3</label>
+                    
+                        <input type="radio" id="radio4" name="radioGrade" value="4" #grade="ngModel" required [(ngModel)]="myReview.grade">
+                        <label for="radio4">4</label>
+                
+                        <input type="radio" id="radio5" name="radioGrade" value="5" #grade="ngModel" required [(ngModel)]="myReview.grade">
+                        <label for="radio5">5</label>
+                    </div>
+                    <small class="text-danger" [class.d-none]="grade.valid || grade.untouched">Ocjena je obavezna</small>
+                    <br>
+                    <div>2. Recenzija<span style="color:red">*</span></div>
+                    <textarea cols="40" rows="2" maxlength="255" #text="ngModel" required [class.is-invalid]="text.touched && text.invalid"
+                     class="form-text" name="reviewText" [(ngModel)]="myReview.text"></textarea>
+                    <small class="text-danger" [class.d-none]="text.valid || text.untouched">Recenzija je obavezna</small>
+                    <br>
+                    <button mat-flat-button [disabled]="reviewForm.form.invalid || submitted" [hidden]="submitted"
+                        class="submit" (click)="submit()">Objavi</button>
+                    <button mat-flat-button [disabled]="reviewForm.form.invalid || text.pristine" [hidden]="!submitted"
+                        class="submit" (click)="editReview()">Uredi</button>
+
+                </div>
+            </form>
+        </div>
+        <br>
+        <div id='map' class='map'> </div>
+        
+        <div *ngIf="canDelete()" class="centered-flex-row">
+            <button [disabled]="loadingDelete" class="btn-primary mr-2" (click)="delete()">
+              <span *ngIf="loadingDelete" class="spinner-border spinner-border-sm mr-1"></span>
+              Obriši događaj
+            </button>
+            <label class="error-message">{{errorDeleteMsg}}</label>
+          </div>
+    </div>
+</div>

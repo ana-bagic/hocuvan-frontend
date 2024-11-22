@@ -1,0 +1,71 @@
+<div class="dark-background">
+
+  <div *ngIf="!hasChats" class="white-text no-chats-message">
+    Još nemate aktivnih chatova.
+    <span *ngIf="isVisitor">
+      Pošaljite poruku organizatoru na njegovoj stranici da započnete chat.
+    </span>
+  </div>
+
+  <div *ngIf="hasChats" class="chat-container">
+    <section class="nav-sidebar">
+
+      <h1 class="white-text title">
+        Pretraži chatove
+      </h1>
+      <div class="search-bar">
+        <form [formGroup]="searchChatsForm" class="search-form">
+          <input class="search-input" type="text" formControlName="filter" maxlength="50" placeholder="Aa" />
+          <mat-icon (click)="searchChats()" class="search-icon">search</mat-icon>
+        </form>
+      </div>
+
+      <div class="nav-inner-scroll">
+        <div class="chats" *ngFor="let chat of chats">
+          <!-- for chats-->
+          <div class="white-text single-chat" (click)="changedChat(chat.chatId)"
+            [ngClass]="{ 'active-chat': chat.chatId == chatId }">
+            <!-- chat-->
+            <div class="chat-photo centered-circle">
+              <img [src]="getImgChat(chat)" alt="Profilna slika" class="chat-photo">
+            </div>
+            <div class="chat-overview">
+              <span class="username">{{chat.otherUsername}}</span>
+              <span>
+                <pre class="last-message">{{chat.lastMessage}}</pre></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="messages-section">
+      <div class="nav-inner-scroll mess" id="mess-scroll">
+        <div class="chats" *ngFor="let m of messagesCurrentChat">
+          <div class="message-photo-text"
+            [ngClass]="(m.sender === user.username) ? 'my-container' : 'other-container' ">
+            <div *ngIf="m.sender != user.username" class="message-photo centered-circle">
+              <img [src]="getImgMessage(m.sender)" alt="Profilna slika" class="message-photo">
+            </div>
+            <div class="message" [ngClass]="(m.sender === user.username) ? 'my-message' : 'other-message' ">
+              {{m.text}}
+            </div>
+            <div *ngIf="m.sender == user.username" class="message-photo centered-circle">
+              <img [src]="getImgMessage(user.username)" alt="Profilna slika" class="message-photo">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="send-message">
+        <form [formGroup]="newMessage">
+          <div class="message-form">
+            <input class="new-message-field" type="text" formControlName="message" maxlength="990" placeholder="Aa" />
+            <mat-icon (click)="sendMessage()" class="send-icon">send</mat-icon>
+          </div>
+
+        </form>
+      </div>
+    </section>
+  </div>
+</div>

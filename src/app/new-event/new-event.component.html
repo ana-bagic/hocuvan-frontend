@@ -1,0 +1,87 @@
+<div class="background">
+  <div class="content">
+
+    <div *ngIf="!isUpdate" class="page-title">
+      Napravi novi događaj
+    </div>
+    <div *ngIf="isUpdate" class="page-title">
+      Uredi događaj
+    </div>
+
+    <hr class="gradient">
+
+    <div>
+      <form [formGroup]="form" (ngSubmit)="save()" class="event-form">
+        <label class="white-text" for="eventName">Ime</label>
+        <input type="text" formControlName="eventName" class="form-control" [(ngModel)]="event.eventName"
+          [ngClass]="{ 'is-invalid': submitted && f.eventName.errors }" maxlength="100" />
+        <div *ngIf="submitted && f.eventName.errors" class="error-message">
+          <div *ngIf="f.eventName.errors.required">Ime događaja je obavezno</div>
+        </div>
+
+        <label class="white-text" for="date">Datum i vrijeme održavanja</label>
+        <input type="datetime-local" formControlName="date" class="form-control" [(ngModel)]="dateString"
+          [ngClass]="{ 'is-invalid': submitted && f.date.errors }" />
+        <div *ngIf="submitted && f.date.errors" class="error-message">
+          <div *ngIf="f.date.errors.required">Datum održavanja događaja je obavezan</div>
+        </div>
+
+        <label class="white-text" for="location">Lokacija</label>
+        <input type="text" formControlName="location" class="form-control" [(ngModel)]="event.location"
+          [ngClass]="{ 'is-invalid': submitted && f.location.errors }" />
+        <div *ngIf="submitted && f.location.errors" class="error-message">
+          <div *ngIf="f.location.errors.required">Lokacija je obavezna</div>
+        </div>
+
+        <label class="white-text" for="categoryName">Kategorija</label>
+        <select name="categoryName" formControlName="categoryName" class="form-control" [(ngModel)]="event.categoryName"
+          [ngClass]="{ 'is-invalid': submitted && f.categoryName.errors }">
+          <option *ngFor="let cat of categories" [value]="cat.categoryName">{{cat.categoryName}}</option>
+        </select>
+        <div *ngIf="submitted && f.categoryName.errors" class="error-message">
+          <div *ngIf="f.categoryName.errors.required">Kategorija je obavezna</div>
+        </div>
+
+        <label class="white-text" for="price">Cijena karte (kn)</label>
+        <input type="number" min="0" formControlName="price" class="form-control" [(ngModel)]="event.price"
+          [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
+        <div *ngIf="submitted && f.price.errors" class="error-message">
+          <div *ngIf="f.price.errors.required">Cijena karte je obavezna</div>
+          <div *ngIf="f.price.errors.min">Cijena karte ne može biti negativan broj</div>
+        </div>
+
+        <label class="white-text" for="numberOfSeats">Broj karata</label>
+        <input type="number" min="1" formControlName="numberOfSeats" class="form-control" [(ngModel)]="event.numberOfSeats"
+          [ngClass]="{ 'is-invalid': submitted && f.numberOfSeats.errors }" />
+        <div *ngIf="submitted && f.numberOfSeats.errors" class="error-message">
+          <div *ngIf="f.numberOfSeats.errors.required">Broj karata je obavezan</div>
+          <div *ngIf="f.numberOfSeats.errors.min">Broj karata mora biti pozitivan broj</div>
+        </div>
+
+        <label class="white-text" for="description">Opis događaja</label>
+        <textarea cols="30" rows="10" formControlName="description" class="form-control" [(ngModel)]="event.description"
+          [ngClass]="{ 'is-invalid': submitted && f.description.errors }" maxlength="990" ></textarea>
+        <div *ngIf="submitted && f.description.errors" class="error-message">
+          <div *ngIf="f.description.errors.required">Opis događaja je obavezan</div>
+        </div>
+
+        <div class="centered-flex-column">
+          <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            <span *ngIf="!isUpdate">
+              Kreiraj događaj
+            </span>
+            <span *ngIf="isUpdate">
+              Spremi promjene
+            </span>
+          </button>
+        </div>
+
+      </form>
+      <div class="info-message">
+        Sva polja je obavezno ispuniti
+      </div>
+    </div>
+    <div id='map' class='map'> </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="dark-background">
+  <div [ngClass]="isAdmin ? 'users-container' : 'organizers-container' ">
+
+    <section *ngIf="isAdmin" class="flex-column">
+      <h1 class="white-text title">
+        Pretraži posjetitelje
+      </h1>
+      <div class="search-bar">
+        <form [formGroup]="searchVisitorsForm" class="search-form">
+          <input class="search-input" type="text" formControlName="filter" maxlength="50" placeholder="Aa" />
+          <mat-icon (click)="searchVisitors()" class="search-icon">search</mat-icon>
+        </form>
+      </div>
+
+      <div class="nav-inner-scroll">
+        <div class="users" *ngFor="let user of visitors">
+          <div class="white-text single-user" (click)="visitor(user)">
+            <div class="user-photo centered-circle">
+              <img [src]="getImg(user)" alt="Profilna slika" class="user-photo">
+            </div>
+            <div class="user-overview">
+              <span class="username">{{user.username}}</span>
+              <span>
+                <pre class="name">{{user.firstName}} {{user.lastName}}</pre></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="flex-column">
+      <h1 class="white-text title">
+        Pretraži organizatore
+      </h1>
+      <div class="search-bar">
+        <form [formGroup]="searchOrganizersForm" class="search-form">
+          <input class="search-input" type="text" formControlName="filter" maxlength="50" placeholder="Aa" />
+          <mat-icon (click)="searchOrganizers()" class="search-icon">search</mat-icon>
+        </form>
+      </div>
+
+      <div class="nav-inner-scroll">
+        <div class="users" *ngFor="let user of organizers">
+          <div class="white-text single-user" (click)="organizer(user)">
+            <div class="user-photo centered-circle">
+              <img [src]="getImg(user)" alt="Profilna slika" class="user-photo">
+            </div>
+            <div class="user-overview">
+              <span class="username">{{user.username}}</span>
+              <span>
+                <pre class="name">{{user.orgName}}</pre></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,176 @@
+* {
+  font-size: 18px;
+}
+
+div {
+  width: 100%;
+}
+
+.background {
+  min-height: calc(100% - 80px);
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: animatedgradient 15s ease infinite;
+}
+
+.content {
+  background: #202325;
+  width: 60%;
+  display: block;
+  margin: auto;
+}
+
+.whiteText {
+  color: white;
+}
+
+.centered-flex-column {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.centered-flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.photoContainer {
+  display: grid;
+  place-items: center;
+  margin-top: 40px;
+  margin-bottom: 25px;
+}
+
+.centeredCircle {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+}
+
+.photoBorder {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  width: 94px;
+  height: 94px;
+  background-size: 400% 400%;
+  filter: blur(4px);
+  animation: animatedgradient 15s ease infinite;
+}
+
+.photo {
+  overflow: hidden;
+  width: 84px;
+  height: 84px;
+  z-index: 2;
+}
+
+.icon {
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+}
+
+.hello {
+  font-family: F37 Bolton, Helvetica Neue, Helvetica, Arial, "sans-serif";
+  margin-bottom: 20px;
+  font-size: 36px;
+  line-height: 40px;
+}
+
+.secondSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+table {
+  width: 50%;
+}
+
+.tableRow {
+  border-bottom: 1px solid #202325;
+}
+
+col {
+  width: 50%;
+}
+
+td:first-child label {
+  color: grey;
+}
+
+td label {
+  color: #e73c7e;
+  padding: 1em 1em 1em 0px;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: transparent;
+  color: #e73c7e;
+  border: 1px solid;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  line-height: 24px;
+  text-transform: uppercase;
+  padding: 3px 16px;
+  margin: 10px 5px 20px 5px;
+}
+
+.btn-primary:hover {
+  opacity: 0.6;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 8px;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.message-form {
+  padding: 15px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 70%;
+}
+
+.new-message-field {
+  padding: 8px;
+  width: 100%;
+  overflow-x: hidden;
+  margin-bottom: 5px;
+  border-radius: 10px;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media(max-width: 800px) {
+  .content {
+    width: 100%;
+  }
+}
